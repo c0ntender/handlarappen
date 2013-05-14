@@ -1,0 +1,156 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://handlarappen.appspot.com/_ah/api",
+  "name" : "shoppinglist",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://handlarappen.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "shoppinglist.shoppinglist.remove" : {
+      "path" : "remove",
+      "httpMethod" : "DELETE",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.alexjenny.handlarappen.ShoppingList.remove",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "shoppinglist.shoppinglist.insert" : {
+      "path" : "shoppableitem/{amount}",
+      "httpMethod" : "POST",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.alexjenny.handlarappen.ShoppingList.insert",
+      "request" : {
+        "parameters" : {
+          "amount" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "shoppinglist.shoppinglist.list" : {
+      "path" : "shoppableitem",
+      "httpMethod" : "GET",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.alexjenny.handlarappen.ShoppingList.list",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "string",
+            "required" : false
+          },
+          "order" : {
+            "type" : "string",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "ShoppableItem" : {
+        "id" : "ShoppableItem",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "category" : {
+            "$ref" : "Category"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Category" : {
+        "id" : "Category",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ShoppableItemCollection" : {
+        "id" : "ShoppableItemCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ShoppableItem"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.alexjenny.handlarappen.ShoppingList.remove" : {
+        "request" : {
+          "$ref" : "ShoppableItem"
+        },
+        "response" : {
+          "$ref" : "ShoppableItem"
+        }
+      },
+      "com.alexjenny.handlarappen.ShoppingList.insert" : {
+        "request" : {
+          "$ref" : "ShoppableItem"
+        },
+        "response" : {
+          "$ref" : "ShoppableItem"
+        }
+      },
+      "com.alexjenny.handlarappen.ShoppingList.list" : {
+        "response" : {
+          "$ref" : "ShoppableItemCollection"
+        }
+      }
+    }
+  }
+}

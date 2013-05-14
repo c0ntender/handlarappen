@@ -1,0 +1,124 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://handlarappen.appspot.com/_ah/api",
+  "name" : "categorylist",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://handlarappen.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "categorylist.categorylist.remove" : {
+      "path" : "remove",
+      "httpMethod" : "DELETE",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.alexjenny.handlarappen.CategoryList.remove",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "categorylist.categorylist.insert" : {
+      "path" : "category",
+      "httpMethod" : "POST",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.alexjenny.handlarappen.CategoryList.insert",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "categorylist.categorylist.list" : {
+      "path" : "category",
+      "httpMethod" : "GET",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.alexjenny.handlarappen.CategoryList.list",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Category" : {
+        "id" : "Category",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CategoryCollection" : {
+        "id" : "CategoryCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Category"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.alexjenny.handlarappen.CategoryList.remove" : {
+        "request" : {
+          "$ref" : "Category"
+        },
+        "response" : {
+          "$ref" : "Category"
+        }
+      },
+      "com.alexjenny.handlarappen.CategoryList.insert" : {
+        "request" : {
+          "$ref" : "Category"
+        },
+        "response" : {
+          "$ref" : "Category"
+        }
+      },
+      "com.alexjenny.handlarappen.CategoryList.list" : {
+        "response" : {
+          "$ref" : "CategoryCollection"
+        }
+      }
+    }
+  }
+}
