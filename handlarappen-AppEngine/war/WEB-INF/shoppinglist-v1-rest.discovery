@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"_eRzJ5rb6y2Sm1GT1st-3xOUuXg/G46AArl9M1zN1zBKb4YYPj43Ylc\"",
+ "etag": "\"_eRzJ5rb6y2Sm1GT1st-3xOUuXg/8DRp18QdRbpcKiBHksaZzUWm_Go\"",
  "discoveryVersion": "v1",
  "id": "shoppinglist:v1",
  "name": "shoppinglist",
@@ -136,9 +136,16 @@
      "id": "shoppinglist.categorylist.remove",
      "path": "categorylist/remove",
      "httpMethod": "DELETE",
-     "request": {
-      "$ref": "Category"
+     "parameters": {
+      "id": {
+       "type": "string",
+       "required": true,
+       "location": "query"
+      }
      },
+     "parameterOrder": [
+      "id"
+     ],
      "response": {
       "$ref": "Category"
      }

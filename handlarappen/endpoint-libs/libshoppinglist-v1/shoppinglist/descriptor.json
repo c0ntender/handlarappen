@@ -1,11 +1,11 @@
 {
   "files": [
     {
-      "path": "handlarappen-shoppinglist-v1-20130520163959-java-1.14.2-beta-sources.jar", 
+      "path": "handlarappen-shoppinglist-v1-20130520191824-java-1.14.2-beta-sources.jar", 
       "type": "source"
     }, 
     {
-      "path": "handlarappen-shoppinglist-v1-20130520163959-java-1.14.2-beta.jar.properties", 
+      "path": "handlarappen-shoppinglist-v1-20130520191824-java-1.14.2-beta.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -689,7 +689,7 @@
     }
   ], 
   "language_version": "1.14.2-beta", 
-  "revision": 20130520163959, 
+  "revision": 20130520191824, 
   "id": "shoppinglist:v1", 
   "modulePath": "com/google/api/services"
 }

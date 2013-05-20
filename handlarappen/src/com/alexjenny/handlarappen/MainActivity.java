@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
 	private Button mAdd;
 	private Button mRemove;
 	private Button mList;
+	private List<Category> mCategories;
 	private EditText mEditText;
 	private OnClickListener mOnClickListener = new OnClickListener() {
 
@@ -63,10 +64,12 @@ public class MainActivity extends Activity {
 						@Override
 						public void run() {
 
+							
 							Category c = new Category();
 							c.setName(category);
+							System.out.println("Trying to remove " + c.getName());
 							String result = new HandlarAppenBackend()
-									.removeCategory(c) ? "Removed " + category
+									.removeCategory(mCategories.get(0)) ? "Removed " + category
 									: "Failed to remove" + category;
 							showToast(result);
 						}
@@ -79,6 +82,8 @@ public class MainActivity extends Activity {
 			case R.id.list_category:
 				new Thread(new Runnable() {
 
+					
+
 					@Override
 					public void run() {
 						List<Category> categories = new HandlarAppenBackend()
@@ -88,6 +93,7 @@ public class MainActivity extends Activity {
 						for (Category c : categories) {
 							toastMsg.append(c.getName()+"\n");
 						}
+						mCategories = categories;
 						showToast(toastMsg.toString());
 					}
 

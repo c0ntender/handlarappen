@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 import javax.inject.Named;
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
@@ -24,14 +26,18 @@ public class ItemsList {
 	 * @return
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unchecked")
 	@ApiMethod(name = "itemslist.list", path = "itemslist/list")
 	public List<ShoppableItem> list(@Nullable @Named("limit") String limit,
 			@Nullable @Named("order") String order)
 			throws IOException {
+		PersistenceManager pm = getPersistenceManager();
+		Query query = pm.newQuery(ShoppableItem.class);
+		query.setOrdering("name desc");
 
-		// TODO implement
-
-		return null;
+		try {
+		return (List<ShoppableItem>) pm.newQuery(query).execute();
+		} finally {pm.close();}
 
 	}
 
@@ -44,9 +50,15 @@ public class ItemsList {
 	 */
 	@ApiMethod(name = "itemslist.insert", path = "itemslist/insert")
 	public ShoppableItem insert(ShoppableItem item) throws IOException {
+		
+		PersistenceManager pm = getPersistenceManager();
+		pm.makePersistent(item);
+		pm.close();
+		
+//		new MessageEndpoint().sendMessage("to be impl");
+		
 
-		// TODO implement
-		return null;
+		return item;
 
 	}
 	
@@ -58,11 +70,21 @@ public class ItemsList {
 	 * @throws IOException
 	 */
 	@ApiMethod(name = "itemslist.remove",  path="itemslist/remove")
-	public ShoppableItem remove(ShoppableItem item) throws IOException {
+	public ShoppableItem remove(@Named("id") String id) throws IOException {
+		
+		PersistenceManager pm = getPersistenceManager();
+		// TODO verify
+		pm.deletePersistent(pm.getObjectById(ShoppableItem.class, id));
+		pm.close();
 
-		// TODO implement
+//		new MessageEndpoint().sendMessage("to be impl");
+		
 		return null;
 
+	}
+	
+	private static PersistenceManager getPersistenceManager() {
+		return PMF.get().getPersistenceManager();
 	}
 
 }

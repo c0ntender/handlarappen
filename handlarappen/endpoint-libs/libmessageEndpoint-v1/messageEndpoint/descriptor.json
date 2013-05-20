@@ -1,11 +1,11 @@
 {
   "files": [
     {
-      "path": "handlarappen-messageEndpoint-v1-20130520164004-java-1.14.2-beta-sources.jar", 
+      "path": "handlarappen-messageEndpoint-v1-20130520191828-java-1.14.2-beta-sources.jar", 
       "type": "source"
     }, 
     {
-      "path": "handlarappen-messageEndpoint-v1-20130520164004-java-1.14.2-beta.jar.properties", 
+      "path": "handlarappen-messageEndpoint-v1-20130520191828-java-1.14.2-beta.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -689,7 +689,7 @@
     }
   ], 
   "language_version": "1.14.2-beta", 
-  "revision": 20130520164004, 
+  "revision": 20130520191828, 
   "id": "messageEndpoint:v1", 
   "modulePath": "com/alexjenny/handlarappen"
 }

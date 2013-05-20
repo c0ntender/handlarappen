@@ -59,7 +59,7 @@ public class HandlarAppenBackend {
 			Shoppinglist list = CloudEndpointUtils.updateBuilder(builder)
 					.build();
 
-			if (list.categorylist().remove(category).execute() != null) {
+			if (list.categorylist().remove(category.getName()).execute() != null) {
 				System.out.println("Success removing Category "
 						+ category.getName());
 				return true;

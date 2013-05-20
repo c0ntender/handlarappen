@@ -23,7 +23,7 @@
             android:layout_alignLeft="@+id/add_category"
             android:layout_below="@+id/add_category"
             android:layout_marginTop="15dp"
-            android:enabled="false"
+            android:enabled="true"
             android:text="Remove category" />
 
         <Button

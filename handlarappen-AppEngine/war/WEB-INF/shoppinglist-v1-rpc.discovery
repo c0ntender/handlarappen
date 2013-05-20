@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"_eRzJ5rb6y2Sm1GT1st-3xOUuXg/G46AArl9M1zN1zBKb4YYPj43Ylc\"",
+ "etag": "\"_eRzJ5rb6y2Sm1GT1st-3xOUuXg/8DRp18QdRbpcKiBHksaZzUWm_Go\"",
  "discoveryVersion": "v1",
  "id": "shoppinglist:v1",
  "name": "shoppinglist",
@@ -133,12 +133,13 @@
   "shoppinglist.categorylist.remove": {
    "id": "shoppinglist.categorylist.remove",
    "parameters": {
-    "resource": {
-     "$ref": "Category"
+    "id": {
+     "type": "string",
+     "required": true
     }
    },
    "parameterOrder": [
-    "resource"
+    "id"
    ],
    "returns": {
     "$ref": "Category"

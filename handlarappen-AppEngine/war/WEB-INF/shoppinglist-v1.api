@@ -92,8 +92,13 @@
       "clientIds" : [ ],
       "rosyMethod" : "com.alexjenny.handlarappen.CategoryList.remove",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -143,21 +148,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "shoppinglist.itemslist.insert" : {
-      "path" : "itemslist/insert",
-      "httpMethod" : "POST",
-      "scopes" : [ ],
-      "audiences" : [ ],
-      "clientIds" : [ ],
-      "rosyMethod" : "com.alexjenny.handlarappen.ItemsList.insert",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "shoppinglist.itemslist.list" : {
       "path" : "itemslist/list",
       "httpMethod" : "GET",
@@ -177,6 +167,21 @@
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "shoppinglist.itemslist.insert" : {
+      "path" : "itemslist/insert",
+      "httpMethod" : "POST",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.alexjenny.handlarappen.ItemsList.insert",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -254,9 +259,6 @@
         }
       },
       "com.alexjenny.handlarappen.CategoryList.remove" : {
-        "request" : {
-          "$ref" : "Category"
-        },
         "response" : {
           "$ref" : "Category"
         }
@@ -282,17 +284,17 @@
           "$ref" : "ShoppableItem"
         }
       },
+      "com.alexjenny.handlarappen.ItemsList.list" : {
+        "response" : {
+          "$ref" : "ShoppableItemCollection"
+        }
+      },
       "com.alexjenny.handlarappen.ItemsList.insert" : {
         "request" : {
           "$ref" : "ShoppableItem"
         },
         "response" : {
           "$ref" : "ShoppableItem"
-        }
-      },
-      "com.alexjenny.handlarappen.ItemsList.list" : {
-        "response" : {
-          "$ref" : "ShoppableItemCollection"
         }
       }
     }

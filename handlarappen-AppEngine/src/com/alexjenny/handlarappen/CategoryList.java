@@ -5,6 +5,7 @@ package com.alexjenny.handlarappen;
 import java.io.IOException;
 import java.util.List;
 
+import javax.inject.Named;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
@@ -36,7 +37,9 @@ public class CategoryList {
 		Query query = pm.newQuery(Category.class);
 		query.setOrdering("name desc");
 
+		try  {
 		return (List<Category>) pm.newQuery(query).execute();
+		} finally {pm.close();}
 
 
 	}
@@ -70,14 +73,16 @@ public class CategoryList {
 	 * @throws IOException
 	 */
 	@ApiMethod(name = "categorylist.remove",  path = "categorylist/remove")
-	public Category remove(Category category) throws IOException {
+	public Category remove(@Named("id") String id) throws IOException {
+		
+		
 		
 		PersistenceManager pm = getPersistenceManager();
-		// TODO verify
-		pm.deletePersistent(category);
-
-		new MessageEndpoint().sendMessage("Category removed, " + category.getName());
+		Category category = null;
+		pm.deletePersistent(pm.getObjectById(Category.class, id));
 		
+//		new MessageEndpoint().sendMessage("Category removed, " + category.getName());
+		pm.close();
 		return category;
 
 	}
