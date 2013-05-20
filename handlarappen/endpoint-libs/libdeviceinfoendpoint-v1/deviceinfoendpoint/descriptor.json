@@ -1,11 +1,11 @@
 {
   "files": [
     {
-      "path": "handlarappen-deviceinfoendpoint-v1-20130514182624-java-1.14.2-beta-sources.jar", 
+      "path": "handlarappen-deviceinfoendpoint-v1-20130520163951-java-1.14.2-beta-sources.jar", 
       "type": "source"
     }, 
     {
-      "path": "handlarappen-deviceinfoendpoint-v1-20130514182624-java-1.14.2-beta.jar.properties", 
+      "path": "handlarappen-deviceinfoendpoint-v1-20130520163951-java-1.14.2-beta.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -689,7 +689,7 @@
     }
   ], 
   "language_version": "1.14.2-beta", 
-  "revision": 20130514182624, 
+  "revision": 20130520163951, 
   "id": "deviceinfoendpoint:v1", 
   "modulePath": "com/alexjenny/handlarappen"
 }

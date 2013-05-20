@@ -19,7 +19,7 @@ import com.google.appengine.api.users.User;
 )
 public class ShoppingListApi {
 
-	@ApiMethod(name = "shoppinglist.list", path = "shoplistlist")
+	@ApiMethod(name = "shoppinglist.list", path = "shoppinglist/list")
 	public List<ShoppableItem> list(@Nullable @Named("limit") String limit,
 			@Nullable @Named("order") String order, User user)
 			throws IOException {
@@ -30,7 +30,7 @@ public class ShoppingListApi {
 
 	}
 
-	@ApiMethod(name = "shoppinglist.insert", path = "shoplistinsert")
+	@ApiMethod(name = "shoppinglist.insert", path = "shoppinglist/insert")
 	public ShoppableItem insert(ShoppableItem item, @Named("amount") int amount)
 			throws IOException {
 
@@ -46,7 +46,7 @@ public class ShoppingListApi {
 
 	}
 
-	@ApiMethod(name = "shoppinglist.remove")
+	@ApiMethod(name = "shoppinglist.remove", path = "shoppinglist/remove")
 	public ShoppableItem removeFromShoppingList(ShoppableItem item)
 			throws OAuthRequestException, IOException {
 

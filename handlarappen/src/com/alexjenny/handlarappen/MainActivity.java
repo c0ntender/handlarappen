@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.api.services.categorylist.model.Category;
+import com.google.api.services.shoppinglist.model.Category;
 
 /**
  * The Main Activity.

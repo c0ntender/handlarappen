@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"_eRzJ5rb6y2Sm1GT1st-3xOUuXg/UiTFM21tMSOc-hnZz1WtOtGCdpQ\"",
+ "etag": "\"_eRzJ5rb6y2Sm1GT1st-3xOUuXg/G46AArl9M1zN1zBKb4YYPj43Ylc\"",
  "discoveryVersion": "v1",
  "id": "shoppinglist:v1",
  "name": "shoppinglist",
@@ -73,6 +73,18 @@
     }
    }
   },
+  "CategoryCollection": {
+   "id": "CategoryCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Category"
+     }
+    }
+   }
+  },
   "ShoppableItem": {
    "id": "ShoppableItem",
    "type": "object",
@@ -99,11 +111,45 @@
   }
  },
  "resources": {
+  "categorylist": {
+   "methods": {
+    "insert": {
+     "id": "shoppinglist.categorylist.insert",
+     "path": "categorylist/insert",
+     "httpMethod": "POST",
+     "request": {
+      "$ref": "Category"
+     },
+     "response": {
+      "$ref": "Category"
+     }
+    },
+    "list": {
+     "id": "shoppinglist.categorylist.list",
+     "path": "categorylist/list",
+     "httpMethod": "GET",
+     "response": {
+      "$ref": "CategoryCollection"
+     }
+    },
+    "remove": {
+     "id": "shoppinglist.categorylist.remove",
+     "path": "categorylist/remove",
+     "httpMethod": "DELETE",
+     "request": {
+      "$ref": "Category"
+     },
+     "response": {
+      "$ref": "Category"
+     }
+    }
+   }
+  },
   "itemslist": {
    "methods": {
     "insert": {
      "id": "shoppinglist.itemslist.insert",
-     "path": "itemslistinsert",
+     "path": "itemslist/insert",
      "httpMethod": "POST",
      "request": {
       "$ref": "ShoppableItem"
@@ -114,7 +160,7 @@
     },
     "list": {
      "id": "shoppinglist.itemslist.list",
-     "path": "itemslist",
+     "path": "itemslist/list",
      "httpMethod": "GET",
      "parameters": {
       "limit": {
@@ -132,7 +178,7 @@
     },
     "remove": {
      "id": "shoppinglist.itemslist.remove",
-     "path": "delete/itemslist/remove",
+     "path": "itemslist/remove",
      "httpMethod": "DELETE",
      "request": {
       "$ref": "ShoppableItem"
@@ -147,7 +193,7 @@
    "methods": {
     "insert": {
      "id": "shoppinglist.shoppinglist.insert",
-     "path": "shoplistinsert",
+     "path": "shoppinglist/insert",
      "httpMethod": "POST",
      "parameters": {
       "amount": {
@@ -169,7 +215,7 @@
     },
     "list": {
      "id": "shoppinglist.shoppinglist.list",
-     "path": "shoplistlist",
+     "path": "shoppinglist/list",
      "httpMethod": "GET",
      "parameters": {
       "limit": {
@@ -187,7 +233,7 @@
     },
     "remove": {
      "id": "shoppinglist.shoppinglist.remove",
-     "path": "fromshoppinglist",
+     "path": "shoppinglist/remove",
      "httpMethod": "DELETE",
      "request": {
       "$ref": "ShoppableItem"

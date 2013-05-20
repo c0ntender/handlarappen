@@ -9,10 +9,6 @@ import javax.inject.Named;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 
-//@Api(name = "itemslist", version = "v1" // ,
-//// clientIds = {Ids.WEB_CLIENT_ID, Ids.ANDROID_CLIENT_ID},
-//// audiences = {Ids.ANDROID_AUDIENCE}
-//)
 @Api(name = "shoppinglist", version = "v1" // ,
 //clientIds = {Ids.WEB_CLIENT_ID, Ids.ANDROID_CLIENT_ID},
 //audiences = {Ids.ANDROID_AUDIENCE}
@@ -28,7 +24,7 @@ public class ItemsList {
 	 * @return
 	 * @throws IOException
 	 */
-	@ApiMethod(name = "itemslist.list", path = "itemslist")
+	@ApiMethod(name = "itemslist.list", path = "itemslist/list")
 	public List<ShoppableItem> list(@Nullable @Named("limit") String limit,
 			@Nullable @Named("order") String order)
 			throws IOException {
@@ -46,7 +42,7 @@ public class ItemsList {
 	 * @return
 	 * @throws IOException
 	 */
-	@ApiMethod(name = "itemslist.insert", path = "itemslistinsert")
+	@ApiMethod(name = "itemslist.insert", path = "itemslist/insert")
 	public ShoppableItem insert(ShoppableItem item) throws IOException {
 
 		// TODO implement
@@ -61,7 +57,7 @@ public class ItemsList {
 	 * @return
 	 * @throws IOException
 	 */
-	@ApiMethod(name = "itemslist.remove",  path="delete/itemslist/remove")
+	@ApiMethod(name = "itemslist.remove",  path="itemslist/remove")
 	public ShoppableItem remove(ShoppableItem item) throws IOException {
 
 		// TODO implement

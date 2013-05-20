@@ -11,12 +11,10 @@ import javax.jdo.Query;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 
-@Api(name = "categorylist", version = "v1" // ,
-// clientIds = {Ids.WEB_CLIENT_ID, Ids.ANDROID_CLIENT_ID},
-// audiences = {Ids.ANDROID_AUDIENCE}
+@Api(name = "shoppinglist", version = "v1" // ,
+//clientIds = {Ids.WEB_CLIENT_ID, Ids.ANDROID_CLIENT_ID},
+//audiences = {Ids.ANDROID_AUDIENCE}
 )
-// TODO add authentication
-// TODO same api as the rest? 
 public class CategoryList {
 
 	
@@ -29,7 +27,7 @@ public class CategoryList {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	@ApiMethod(name = "categorylist.list")
+	@ApiMethod(name = "categorylist.list",  path = "categorylist/list")
 	public List<Category> list()
 			throws IOException {
 		
@@ -50,7 +48,7 @@ public class CategoryList {
 	 * @return
 	 * @throws IOException
 	 */
-	@ApiMethod(name = "categorylist.insert")
+	@ApiMethod(name = "categorylist.insert",  path = "categorylist/insert")
 	public Category insert(Category category) throws IOException {
 		
 		PersistenceManager pm = getPersistenceManager();
@@ -71,7 +69,7 @@ public class CategoryList {
 	 * @return
 	 * @throws IOException
 	 */
-	@ApiMethod(name = "categorylist.remove")
+	@ApiMethod(name = "categorylist.remove",  path = "categorylist/remove")
 	public Category remove(Category category) throws IOException {
 		
 		PersistenceManager pm = getPersistenceManager();

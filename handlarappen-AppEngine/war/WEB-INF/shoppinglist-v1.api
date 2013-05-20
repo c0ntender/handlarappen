@@ -25,7 +25,7 @@
   },
   "methods" : {
     "shoppinglist.shoppinglist.insert" : {
-      "path" : "shoplistinsert",
+      "path" : "shoppinglist/insert",
       "httpMethod" : "POST",
       "scopes" : [ ],
       "audiences" : [ ],
@@ -46,7 +46,7 @@
       }
     },
     "shoppinglist.shoppinglist.remove" : {
-      "path" : "fromshoppinglist",
+      "path" : "shoppinglist/remove",
       "httpMethod" : "DELETE",
       "scopes" : [ ],
       "audiences" : [ ],
@@ -61,7 +61,7 @@
       }
     },
     "shoppinglist.shoppinglist.list" : {
-      "path" : "shoplistlist",
+      "path" : "shoppinglist/list",
       "httpMethod" : "GET",
       "scopes" : [ ],
       "audiences" : [ ],
@@ -84,8 +84,52 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "shoppinglist.categorylist.remove" : {
+      "path" : "categorylist/remove",
+      "httpMethod" : "DELETE",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.alexjenny.handlarappen.CategoryList.remove",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "shoppinglist.categorylist.insert" : {
+      "path" : "categorylist/insert",
+      "httpMethod" : "POST",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.alexjenny.handlarappen.CategoryList.insert",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "shoppinglist.categorylist.list" : {
+      "path" : "categorylist/list",
+      "httpMethod" : "GET",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.alexjenny.handlarappen.CategoryList.list",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "shoppinglist.itemslist.remove" : {
-      "path" : "delete/itemslist/remove",
+      "path" : "itemslist/remove",
       "httpMethod" : "DELETE",
       "scopes" : [ ],
       "audiences" : [ ],
@@ -99,8 +143,23 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "shoppinglist.itemslist.insert" : {
+      "path" : "itemslist/insert",
+      "httpMethod" : "POST",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.alexjenny.handlarappen.ItemsList.insert",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "shoppinglist.itemslist.list" : {
-      "path" : "itemslist",
+      "path" : "itemslist/list",
       "httpMethod" : "GET",
       "scopes" : [ ],
       "audiences" : [ ],
@@ -118,21 +177,6 @@
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "shoppinglist.itemslist.insert" : {
-      "path" : "itemslistinsert",
-      "httpMethod" : "POST",
-      "scopes" : [ ],
-      "audiences" : [ ],
-      "clientIds" : [ ],
-      "rosyMethod" : "com.alexjenny.handlarappen.ItemsList.insert",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -173,6 +217,18 @@
             }
           }
         }
+      },
+      "CategoryCollection" : {
+        "id" : "CategoryCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Category"
+            }
+          }
+        }
       }
     },
     "methods" : {
@@ -197,7 +253,36 @@
           "$ref" : "ShoppableItemCollection"
         }
       },
+      "com.alexjenny.handlarappen.CategoryList.remove" : {
+        "request" : {
+          "$ref" : "Category"
+        },
+        "response" : {
+          "$ref" : "Category"
+        }
+      },
+      "com.alexjenny.handlarappen.CategoryList.insert" : {
+        "request" : {
+          "$ref" : "Category"
+        },
+        "response" : {
+          "$ref" : "Category"
+        }
+      },
+      "com.alexjenny.handlarappen.CategoryList.list" : {
+        "response" : {
+          "$ref" : "CategoryCollection"
+        }
+      },
       "com.alexjenny.handlarappen.ItemsList.remove" : {
+        "request" : {
+          "$ref" : "ShoppableItem"
+        },
+        "response" : {
+          "$ref" : "ShoppableItem"
+        }
+      },
+      "com.alexjenny.handlarappen.ItemsList.insert" : {
         "request" : {
           "$ref" : "ShoppableItem"
         },
@@ -208,14 +293,6 @@
       "com.alexjenny.handlarappen.ItemsList.list" : {
         "response" : {
           "$ref" : "ShoppableItemCollection"
-        }
-      },
-      "com.alexjenny.handlarappen.ItemsList.insert" : {
-        "request" : {
-          "$ref" : "ShoppableItem"
-        },
-        "response" : {
-          "$ref" : "ShoppableItem"
         }
       }
     }
